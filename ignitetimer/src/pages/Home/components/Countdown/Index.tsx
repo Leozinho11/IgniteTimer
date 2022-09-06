@@ -5,6 +5,7 @@ import { CountdownContainer, Separator } from "./styles";
 interface CountdownProps{
     activeCycle: any,
     setCycles: any,
+    activeCycleId: any
 }
 
 
