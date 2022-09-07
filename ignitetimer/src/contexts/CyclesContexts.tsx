@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useReducer } from "react";
 
 interface CreateCycleData {
     task: string
@@ -72,6 +72,13 @@ export function CyclesContextProvider({ children }: CyclesContextProviderProps) 
     }
 
     function interruptCurrentCycle(){
+        setCycles((state) => state.map((cycle) => {
+            if (cycle.id === activeCycleId) {
+                return { ...cycle, interruptedDate: new Date() }
+            } else {
+                return cycle
+            }
+        }),)
 
         setActiveCycleId(null)
         document.title = 'Ignite Timer'
